@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+
 using VisitorManagement2025.Data;
 using VisitorManagement2025.Models;
 
@@ -48,7 +45,7 @@ namespace VisitorManagement2025.Controllers
         // GET: Visitors/Create
         public IActionResult Create()
         {
-            ViewData["StaffNameId"] = new SelectList(_context.StaffNames, "Id", "Id");
+            ViewData["StaffNameId"] = new SelectList(_context.StaffNames, "Id", "Name");
             return View();
         }
 
@@ -83,7 +80,7 @@ namespace VisitorManagement2025.Controllers
             {
                 return NotFound();
             }
-            ViewData["StaffNameId"] = new SelectList(_context.StaffNames, "Id", "Id", visitors.StaffNameId);
+            ViewData["StaffNameId"] = new SelectList(_context.StaffNames, "Id", "Name", visitors.StaffNameId);
             return View(visitors);
         }
 
